@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Profit Calculator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .result-box {
+          font-weight: bold;
+          color: #2c4350;
+          font-size: 30px;
+        }
+        h2 { color:rgb(11, 70, 232); }
+    </style>
+</head>
+
+<body>
+  <h2>Stock Profit & Loss Calculator</h2>
+
+  <style>
+    /* 針對所有文字輸入框 */
+    input[type="text"] {
+        padding-left: 10px;
+        padding-right: 15px;      /* 內文字與邊框的距離，增加點擊感 */
+        width: 120px;              /* 寬度 */
+        height: 60px;             /* 高度 */
+        font-size: 30px;          /* 讓輸入的文字大一點 */
+        border: 3px solid #ccc; /* 設定邊框 */
+        border-radius: 8px;       /* 增加圓角讓視覺更柔和 */
+    }
+  </style>
+
+  <style>
+    .label-text {
+      font-size: 30px;    /* 字體大小 */
+      color: #080100;   /* 字體顏色 (例如紅色) */
+      font-weight: bold;  /* 加粗 */
+    }
+  </style>
+
+  <style>
+    /* 使用 # 來指定 id */
+    #sumButtonId {
+      font-size: 30px;              /* 字體大小 */
+      padding: 10px 10px;            /* 內距：第一個值是上下，第二個值是左右 */
+      min-width: 60px;              /* 也可以直接指定最小寬度 */
+      cursor: pointer;              /* 滑鼠游標變手指 */
+      background-color: #f0f0f0;  /* 背景顏色 */
+      border: 2px solid #333;     /* 邊框 */
+      border-radius: 10px;          /* 圓角 */
+    }
+  
+    /* 滑鼠移上去時的視覺效果 */
+    #sumButtonId:hover {
+      background-color: #ddd;
+    }
+  </style>
+
+  <p>
+    <span class = "label-text">買價　</span> 
+    <input type = "text" id = "bidId">
+    <span class = "label-text">　元</span>
+  </p>
+
+  <p>
+    <span class = "label-text">賣價　</span> 
+    <input type = "text" id = "askId">
+    <span class = "label-text">　元</span>
+  </p>
+
+  <p>
+    <span class = "label-text">股數　</span> 
+    <input type = "text" id = "shareId">
+    <span class = "label-text">　股</span>
+  </p>
+
+  <p>
+    <button id = 'sumButtonId'>SUM</button>　
+    <span class = "result-box" id = "resultId"> 0</span> 　元
+  </p>
+
+  <script>
+  document.getElementById('sumButtonId').onclick = function() {
+    // 選取輸入欄位的 DOM 並宣告變數名，用 value 帶出輸入欄的值。
+    const bid = parseFloat(document.getElementById('bidId').value) || 0;
+    const ask = parseFloat(document.getElementById('askId').value) || 0;
+    const share = parseInt(document.getElementById('shareId').value) || 0;
+  
+    // 再用一個變數儲存金額加總
+    //const sum = parseFloat((ask - bid - ask * 0.004425 - bid * 0.001425) * share).toFixed(2);
+    const sum = parseFloat((ask - bid - ask * 0.004425 - bid * 0.001425) * share);
+
+    // 將結果格式化（加上千分位與顏色區分）
+    const display = document.getElementById('resultId');
+    //display.textContent = sum.toLocaleString();
+
+    // 使用 toLocaleString 並透過參數設定小數點位數與千分位
+    // minimumFractionDigits: 2 (確保至少顯示兩位小數)
+    // maximumFractionDigits: 2 (最多顯示兩位小數)
+    display.textContent = sum.toLocaleString('en-US', { 
+        minimumFractionDigits: 2, 
+        maximumFractionDigits: 2 
+    });
+
+    // 簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色 (美股通常綠漲紅跌)
+    display.style.color = sum >= 0 ? "#e74c3c" : "#27ae60";
+  }
+  </script>
+</body>
+</html>
+
+Jason Lin (December 30, 2025)
