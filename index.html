@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jason's Website</title>
+    <style>
+        /* 基本樣式設定 */
+        body {
+            font-family: "Microsoft JhengHei", Arial, sans-serif;
+            margin: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* 導覽列 */
+        header {
+            background: #2c3e50;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        /* 英雄區 (Hero Section) */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        /*url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1350&q=80');*/
+                        url('Dragon_01.png');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .hero h1 { font-size: 3rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.2rem; margin-bottom: 20px; }
+
+        .btn {
+            background: #e74c3c;
+            color: white;
+            padding: 10px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .btn:hover { background: #c0392b; }
+
+        /* 特色區塊 */
+        .container {
+            padding: 50px 10%;
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 250px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* 頁尾 */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo"><h2>Jason</h2></div>
+        <nav>
+            <a href="#">Homepage</a>
+            <a href="#">About</a>
+            <a href="#">Service</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Jason's Website</h1>
+        <p>For Test</p>
+        <a href="#" class="btn">Entry</a>
+    </section>
+
+    <section class="container">
+        <div class="card">
+            <h3>Test1</h3>
+            <p>Page</p>
+        </div>
+        <div class="card">
+            <h3>Test2</h3>
+            <p>Page</p>
+        </div>
+        <div class="card">
+            <h3>Test3</h3>
+            <p>Page</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; December 31, 2025  Jason Lin. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+如何換 background 的圖案？
