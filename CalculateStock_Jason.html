@@ -6,14 +6,19 @@
     <title>Stock Profit Calculator</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
+        h2 {
+          font-size: 50px;
+          color:rgb(11, 70, 232);
+        }
         .result-box {
           font-size: 50px;
           font-weight: bold;
           color: #2c4350;
         }
-        h2 {
+        .profit-box {
           font-size: 50px;
-          color:rgb(11, 70, 232);
+          font-weight: bold;
+          color: #2c4350;
         }
     </style>
 </head>
@@ -64,12 +69,12 @@
 
   <style>
     #author-info {
-      font-size: 30px;    /* 設定字體大小 */
-      font-weight: bold;  /* 加粗 */
-      color: #1905f7;   /* 設定顏色 (灰度) */
-      margin-top: 30px;   /* 與上方內容保持距離 */
-      font-style: italic; /* (選填) 斜體增加質感 */
-      text-align: left;   /* (選填) 靠右對齊 */
+      font-size: 50px;          /* 設定字體大小 */
+      font-weight: bold;        /* 加粗 */
+      color:rgb(11, 70, 232); /* 設定顏色 (灰度) */
+      margin-top: 30px;         /* 與上方內容保持距離 */
+      font-style: italic;       /* (選填) 斜體增加質感 */
+      text-align: left;         /* (選填) 靠右對齊 */
   }
   </style>
 
@@ -95,6 +100,7 @@
     <button id = 'sumButtonId'>SUM</button>　
     <span class = "result-box" id = "resultId"> 0</span>
     <span class = "label-text">　元</span>
+    <span class="result-box" id="percentId" style="margin-left: 20px;"> (0.00%)</span>
   </p>
 
   <script>
@@ -105,26 +111,34 @@
     const share = parseInt(document.getElementById('shareId').value) || 0;
   
     // 再用一個變數儲存金額加總
-    //const sum = parseFloat((ask - bid - ask * 0.004425 - bid * 0.001425) * share).toFixed(2);
     const sum = parseFloat((ask - bid - ask * 0.004425 - bid * 0.001425) * share);
+    const percent = parseFloat(((ask - bid -ask * 0.004425 - bid * 0.001425) / bid) * 100);
 
     // 將結果格式化（加上千分位與顏色區分）
     const display = document.getElementById('resultId');
-    //display.textContent = sum.toLocaleString();
-
+    const displayPercent = document.getElementById('percentId');
+ 
     // 使用 toLocaleString 並透過參數設定小數點位數與千分位
     // minimumFractionDigits: 2 (確保至少顯示兩位小數)
     // maximumFractionDigits: 2 (最多顯示兩位小數)
-    display.textContent = sum.toLocaleString('en-US', { 
-        minimumFractionDigits: 2, 
-        maximumFractionDigits: 2 
+    display.textContent = sum.toLocaleString('en-US', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
     });
-
+  
     // 簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色 (美股通常綠漲紅跌)
-    display.style.color = sum >= 0 ? "#e74c3c" : "#27ae60";
+    // display.style.color = sum >= 0 ? "#e74c3c" : "#27ae60";
+  
+    // 更新百分比顯示 (顯示到小數點後兩位)
+    displayPercent.textContent = `(${percent.toFixed(2)}%)`;
+  
+    // 統一顏色判斷 (簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色。)
+    const color = sum >= 0 ? "#e74c3c" : "#27ae60";
+    display.style.color = color;
+    displayPercent.style.color = color;
   }
   </script>
 
-  <div id="author-info">Jason Lin (December 30, 2025)</div>
+  <div id="author-info">Jason Lin (January 05, 2026)</div>
 </body>
 </html>
