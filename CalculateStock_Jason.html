@@ -7,11 +7,14 @@
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         .result-box {
+          font-size: 50px;
           font-weight: bold;
           color: #2c4350;
-          font-size: 30px;
         }
-        h2 { color:rgb(11, 70, 232); }
+        h2 {
+          font-size: 50px;
+          color:rgb(11, 70, 232);
+        }
     </style>
 </head>
 
@@ -23,9 +26,10 @@
     input[type="text"] {
         padding-left: 10px;
         padding-right: 15px;      /* 內文字與邊框的距離，增加點擊感 */
-        width: 120px;              /* 寬度 */
-        height: 60px;             /* 高度 */
-        font-size: 30px;          /* 讓輸入的文字大一點 */
+        padding-top: 10px;
+        width: 240px;             /* 寬度 */
+        height: 80px;            /* 高度 */
+        font-size: 50px;          /* 讓輸入的文字大一點 */
         border: 3px solid #ccc; /* 設定邊框 */
         border-radius: 8px;       /* 增加圓角讓視覺更柔和 */
     }
@@ -33,17 +37,18 @@
 
   <style>
     .label-text {
-      font-size: 30px;    /* 字體大小 */
-      color: #080100;   /* 字體顏色 (例如紅色) */
+      font-size: 50px;    /* 字體大小 */
       font-weight: bold;  /* 加粗 */
+      color: #080100;   /* 字體顏色 (例如紅色) */
     }
   </style>
 
   <style>
     /* 使用 # 來指定 id */
     #sumButtonId {
-      font-size: 30px;              /* 字體大小 */
-      padding: 10px 10px;            /* 內距：第一個值是上下，第二個值是左右 */
+      font-size: 50px;              /* 字體大小 */
+      font-weight: bold;            /* 加粗 */
+      padding: 10px 20px;           /* 內距：第一個值是上下，第二個值是左右 */
       min-width: 60px;              /* 也可以直接指定最小寬度 */
       cursor: pointer;              /* 滑鼠游標變手指 */
       background-color: #f0f0f0;  /* 背景顏色 */
@@ -55,6 +60,17 @@
     #sumButtonId:hover {
       background-color: #ddd;
     }
+  </style>
+
+  <style>
+    #author-info {
+      font-size: 30px;    /* 設定字體大小 */
+      font-weight: bold;  /* 加粗 */
+      color: #1905f7;   /* 設定顏色 (灰度) */
+      margin-top: 30px;   /* 與上方內容保持距離 */
+      font-style: italic; /* (選填) 斜體增加質感 */
+      text-align: left;   /* (選填) 靠右對齊 */
+  }
   </style>
 
   <p>
@@ -108,7 +124,7 @@
     display.style.color = sum >= 0 ? "#e74c3c" : "#27ae60";
   }
   </script>
+
+  <div id="author-info">Jason Lin (December 30, 2025)</div>
 </body>
 </html>
-
-Jason Lin (December 30, 2025)
