@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
 <head>
     <meta charset="UTF-8">
     <title>Stock Profit Calculator</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         h2 {
@@ -24,6 +29,13 @@
           font-size: 50px;
           font-weight: bold;
           color: #080100;
+        }
+        .rich-image {
+          width: 100%;          /* 寬度隨容器調整 */
+          max-width: 600px;     /* 最大寬度限制 */
+          border-radius: 15px;  /* 圓角效果，跟你的輸入框風格一致 */
+          margin-top: 20px;
+          border: 3px solid #ccc;
         }
     </style>
 </head>
@@ -84,23 +96,31 @@
   }
   </style>
 
-  <p>
-    <span class = "label-text">買價　　</span>
-    <input type = "text" id = "bidId">
-    <span class = "label-text"> 元</span>
-  </p>
+  <div style="display: flex; align-items: flex-start;">
+    <div>
+      <p>
+        <span class = "label-text">買價　　</span>
+        <input type = "text" id = "bidId">
+        <span class = "label-text"> 元</span>
+      </p>
 
-  <p>
-    <span class = "label-text">賣價　　</span>
-    <input type = "text" id = "askId">
-    <span class = "label-text">元</span>
-  </p>
+      <p>
+        <span class = "label-text">賣價　　</span>
+        <input type = "text" id = "askId">
+        <span class = "label-text">元</span>
+      </p>
 
-  <p>
-    <span class = "label-text">股數　　</span>
-    <input type = "text" id = "shareId" value = "1000">
-    <span class = "label-text">股</span>
-  </p>
+      <p>
+        <span class = "label-text">股數　　</span>
+        <input type = "text" id = "shareId" value = "1000">
+        <span class = "label-text">股</span>
+      </p>
+    </div>
+
+    <div style="margin-left: 80px; margin-top: 20px;">
+    <img src="rich.jpg" alt="Rich" style="width: 250px; border-radius: 10px; border: 3px solid #ccc;">
+    </div>
+  </div>
 
   <p>
     <span class = "label-text">手續費　</span>
