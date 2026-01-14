@@ -124,7 +124,7 @@
 
   <p>
     <span class = "label-text">手續費　</span>
-    <input type = "text" id = "feeDiscountId" value = "100">
+    <input type = "text" id = "feeDiscountId" value = "28">
     <span class = "label-text"> (%)：</span>
     <span class = "fee-box" id = "feeId">　　0</span>
     <span class = "label-text">　元</span>
@@ -146,10 +146,13 @@
     const feeDiscount = parseInt(document.getElementById('feeDiscountId').value) || 0;
   
     // 再用一個變數儲存金額加總
-    const fee = parseFloat((bid + ask) * 1.425 * (feeDiscount / 100));
-    const sum = parseFloat((ask - bid - ask * 0.003) * share - fee);
+    //const fee = parseFloat((bid + ask) * 1.425 * (feeDiscount / 100));
+    //const fee = parseFloat((bid + ask) * 0.001425 * share * (feeDiscount / 100));
+    const fee = parseFloat((bid + ask) * share * 0.001425 * (feeDiscount / 100));
+    //const sum = parseFloat((ask - bid - ask * 0.003) * share - fee);
+    const sum = parseFloat((ask - bid - ((bid + ask) * 0.001425 * (feeDiscount / 100)) - ask * 0.003) * share);
     //const percent = parseFloat(((ask - bid -ask * 0.004425 - bid * 0.001425) / bid) * 100);
-    const percent = parseFloat((sum / (bid * 1000)) * 100);
+    const percent = parseFloat((sum / (bid * share)) * 100);
 
     // 將結果格式化（加上千分位與顏色區分）
     const displayFee = document.getElementById('feeId');
@@ -182,6 +185,6 @@
   }
   </script>
 
-  <div id="author-info">Jason Lin (January 06, 2026)</div>
+  <div id="author-info">Jason Lin (January 14, 2026)</div>
 </body>
 </html>
