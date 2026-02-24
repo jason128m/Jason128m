@@ -15,6 +15,7 @@
           font-size: 50px;
           color:rgb(11, 70, 232);
         }
+        /*
         .fee-box {
           font-size: 50px;
           font-weight: bold;
@@ -24,6 +25,23 @@
           font-size: 50px;
           font-weight: bold;
           color: #080100;
+        }
+        */
+        .fee-box {
+          font-size: 50px;
+          font-weight: bold;
+          color: #080100;
+          display: inline-block; /* 讓寬度設定生效 */
+          min-width: 370px;      /* 預留空間給大數字 */
+          text-align: right;     /* 數字靠右對齊比較美觀 */
+        }
+        .result-box {
+          font-size: 50px;
+          font-weight: bold;
+          color: #080100;
+          display: inline-block; /* 讓寬度設定生效 */
+          min-width: 320px;      /* 預留空間給大數字 */
+          text-align: right;     /* 數字靠右對齊比較美觀 */
         }
         .profit-box {
           font-size: 50px;
@@ -49,11 +67,12 @@
         padding-left: 20px;
         padding-right: 20px;      /* 內文字與邊框的距離，增加點擊感 */
         padding-top: 10px;
-        width: 200px;             /* 寬度 */
+        width: 170px;             /* 寬度 */
         height: 80px;             /* 高度 */
         font-size: 50px;          /* 讓輸入的文字大一點 */
         border: 3px solid #ccc; /* 設定邊框 */
         border-radius: 8px;       /* 增加圓角讓視覺更柔和 */
+        text-align: right;        /* 數字靠右對齊比較美觀 */
     }
   </style>
 
@@ -115,27 +134,33 @@
         <input type = "text" id = "shareId" value = "1000">
         <span class = "label-text">股</span>
       </p>
+
+      <p>
+        <span class = "label-text">手續費　</span>
+        <input type = "text" id = "feeDiscountId" value = "28">
+        <span class = "label-text"> (%)</span>
+      </p>
+
+      <p>
+        <span class = "fee-box" id = "feeId">0</span>
+        <span class = "label-text">　元</span>
+      </p>
+
+      <p>
+        <button id = 'sumButtonId'>SUM</button>
+        <span class = "result-box" id = "resultId"> 0</span>
+        <span class = "label-text">　元</span>
+      </p>
+
+      <p>
+        <span class="result-box" id = "percentId" style="margin-left: 20px;"> 0.00%</span>
+      </p>
     </div>
 
-    <div style="margin-left: 80px; margin-top: 20px;">
-    <img src="wealth.png" alt="Rich" style="width: 210px; border-radius: 10px; border: none;">
+    <div style="margin-left: 20px; margin-top: 0px;">
+      <img src="wealth.png" alt="Rich" style="width: 300px; border-radius: 10px; border: none;">
     </div>
   </div>
-
-  <p>
-    <span class = "label-text">手續費　</span>
-    <input type = "text" id = "feeDiscountId" value = "28">
-    <span class = "label-text"> (%)：</span>
-    <span class = "fee-box" id = "feeId">　　0</span>
-    <span class = "label-text">　元</span>
-  </p>
-
-  <p>
-    <button id = 'sumButtonId'>SUM</button>
-    <span class = "result-box" id = "resultId"> 0</span>
-    <span class = "label-text">　元</span>
-    <span class="result-box" id = "percentId" style="margin-left: 20px;"> (0.00%)</span>
-  </p>
 
   <script>
   document.getElementById('sumButtonId').onclick = function() {
@@ -163,20 +188,20 @@
     // minimumFractionDigits: 2 (確保至少顯示兩位小數)
     // maximumFractionDigits: 2 (最多顯示兩位小數)
     displayFee.textContent = fee.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1
     });
 
     displayResult.textContent = sum.toLocaleString('en-US', {
-        minimumFractionDigits: 2,
-        maximumFractionDigits: 2
+        minimumFractionDigits: 1,
+        maximumFractionDigits: 1
     });
   
     // 簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色 (美股通常綠漲紅跌)
     // display.style.color = sum >= 0 ? "#e74c3c" : "#27ae60";
   
     // 更新百分比顯示 (顯示到小數點後兩位)
-    displayPercent.textContent = `(${percent.toFixed(2)}%)`;
+    displayPercent.textContent = `${percent.toFixed(2)}%`;
   
     // 統一顏色判斷 (簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色。)
     const color = sum >= 0 ? "#e74c3c" : "#27ae60";
