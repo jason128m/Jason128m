@@ -142,7 +142,7 @@
       </p>
 
       <p>
-        <span class = "fee-box" id = "feeId">0</span>
+        <span class = "fee-box" id = "feeId"> 0 </span>
         <span class = "label-text"> 元</span>
       </p>
 
@@ -151,8 +151,8 @@
       </p>
 
       <p>
-        <span class = "result-box" id = "resultId"> 0</span>
-        <span class = "label-text"> 元</span>
+        <span class = "result-box" id = "resultId"> 0 </span>
+        <span class = "label-text" id = "unitId"> 元</span>
       </p>
   
       <p>
@@ -185,6 +185,7 @@
     // 將結果格式化（加上千分位與顏色區分）
     const displayFee = document.getElementById('feeId');
     const displayResult = document.getElementById('resultId');
+    const displayUnit = document.getElementById('unitId'); // 抓取「元」
     const displayPercent = document.getElementById('percentId');
    
     // 使用 toLocaleString 並透過參數設定小數點位數與千分位
@@ -209,7 +210,9 @@
     // 統一顏色判斷 (簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色。)
     const color = sum >= 0 ? "#e74c3c" : "#27ae60";
     displayResult.style.color = color;
+    displayUnit.style.color = color; // 讓「元」也變色
     displayPercent.style.color = color;
+
   }
   </script>
 
