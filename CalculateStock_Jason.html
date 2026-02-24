@@ -32,7 +32,7 @@
           font-weight: bold;
           color: #080100;
           display: inline-block; /* 讓寬度設定生效 */
-          min-width: 430px;      /* 預留空間給大數字 */
+          min-width: 340px;      /* 預留空間給大數字 */
           text-align: right;     /* 數字靠右對齊比較美觀 */
         }
         .result-box {
@@ -40,7 +40,7 @@
           font-weight: bold;
           color: #080100;
           display: inline-block; /* 讓寬度設定生效 */
-          min-width: 320px;      /* 預留空間給大數字 */
+          min-width: 340px;      /* 預留空間給大數字 */
           text-align: right;     /* 數字靠右對齊比較美觀 */
         }
         .profit-box {
@@ -67,7 +67,7 @@
         padding-left: 20px;
         padding-right: 20px;      /* 內文字與邊框的距離，增加點擊感 */
         padding-top: 10px;
-        width: 170px;             /* 寬度 */
+        width: 190px;             /* 寬度 */
         height: 80px;             /* 高度 */
         font-size: 50px;          /* 讓輸入的文字大一點 */
         border: 3px solid #ccc; /* 設定邊框 */
@@ -87,7 +87,7 @@
   <style>
     /* 使用 # 來指定 id */
     #sumButtonId {
-      font-size: 50px;              /* 字體大小 */
+      font-size: 70px;              /* 字體大小 */
       font-weight: bold;            /* 加粗 */
       padding: 10px 10px;           /* 內距：第一個值是上下，第二個值是左右 */
       min-width: 60px;              /* 也可以直接指定最小寬度 */
@@ -118,42 +118,45 @@
   <div style="display: flex; align-items: flex-start;">
     <div>
       <p>
-        <span class = "label-text">買價　　</span>
+        <span class = "label-text">買價　</span>
         <input type = "text" id = "bidId">
         <span class = "label-text"> 元</span>
       </p>
 
       <p>
-        <span class = "label-text">賣價　　</span>
+        <span class = "label-text">賣價　</span>
         <input type = "text" id = "askId">
-        <span class = "label-text">元</span>
+        <span class = "label-text"> 元</span>
       </p>
 
       <p>
-        <span class = "label-text">股數　　</span>
+        <span class = "label-text">股數　</span>
         <input type = "text" id = "shareId" value = "1000">
-        <span class = "label-text">股</span>
+        <span class = "label-text"> 股</span>
       </p>
 
       <p>
-        <span class = "label-text">手續費　</span>
+        <span class = "label-text">手續費</span>
         <input type = "text" id = "feeDiscountId" value = "28">
-        <span class = "label-text"> (%)</span>
+        <span class = "label-text"> %</span>
       </p>
 
       <p>
         <span class = "fee-box" id = "feeId">0</span>
-        <span class = "label-text">元</span>
+        <span class = "label-text"> 元</span>
       </p>
 
       <p>
         <button id = 'sumButtonId'>SUM</button>
-        <span class = "result-box" id = "resultId"> 0</span>
-        <span class = "label-text">元</span>
       </p>
 
       <p>
-        <span class="result-box" id = "percentId" style="margin-left: 20px;"> 0.00%</span>
+        <span class = "result-box" id = "resultId"> 0</span>
+        <span class = "label-text"> 元</span>
+      </p>
+  
+      <p>
+        <span class="result-box" id = "percentId" style="margin-left: 50px;"> 0.00 %</span>
       </p>
     </div>
 
@@ -193,15 +196,15 @@
     });
 
     displayResult.textContent = sum.toLocaleString('en-US', {
-        minimumFractionDigits: 1,
-        maximumFractionDigits: 1
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0
     });
   
     // 簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色 (美股通常綠漲紅跌)
     // display.style.color = sum >= 0 ? "#e74c3c" : "#27ae60";
   
     // 更新百分比顯示 (顯示到小數點後兩位)
-    displayPercent.textContent = `${percent.toFixed(2)}%`;
+    displayPercent.textContent = `${percent.toFixed(2)} %`;
   
     // 統一顏色判斷 (簡單的視覺回饋：獲利為正顯示紅色，負值顯示綠色。)
     const color = sum >= 0 ? "#e74c3c" : "#27ae60";
@@ -210,6 +213,6 @@
   }
   </script>
 
-  <div id="author-info">Jason Lin (February 23, 2026)</div>
+  <div id="author-info">Jason Lin (February 24, 2026)</div>
 </body>
 </html>
