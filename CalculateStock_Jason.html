@@ -12,7 +12,7 @@
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; }
         h2 {
-          font-size: 50px;
+          font-size: 70px;
           color:rgb(11, 70, 232);
         }
         /*
@@ -59,7 +59,7 @@
 </head>
 
 <body>
-  <h2>Stock Profit & Loss Calculator</h2>
+  <h2>Profit & Loss Calculator</h2>
 
   <style>
     /* 針對所有文字輸入框 */
@@ -119,25 +119,31 @@
     <div>
       <p>
         <span class = "label-text">買價　</span>
-        <input type = "text" id = "bidId">
+        <input type = "text" id = "Bid_Id">
         <span class = "label-text"> 元</span>
       </p>
 
       <p>
         <span class = "label-text">賣價　</span>
-        <input type = "text" id = "askId">
+        <input type = "text" id = "Ask_Id">
         <span class = "label-text"> 元</span>
       </p>
 
       <p>
         <span class = "label-text">股數　</span>
-        <input type = "text" id = "shareId" value = "1000">
+        <input type = "text" id = "Share_Id" value = "1000">
         <span class = "label-text"> 股</span>
       </p>
 
       <p>
+        <span class = "label-text">證交稅</span>
+        <input type = "text" id = "STT_Id" value = "0.3">
+        <span class = "label-text"> %</span>
+      </p>
+
+      <p>
         <span class = "label-text">手續費</span>
-        <input type = "text" id = "feeDiscountId" value = "28">
+        <input type = "text" id = "FeeDiscount_Id" value = "28">
         <span class = "label-text"> %</span>
       </p>
 
@@ -168,19 +174,20 @@
   <script>
   document.getElementById('sumButtonId').onclick = function() {
     // 選取輸入欄位的 DOM 並宣告變數名，用 value 帶出輸入欄的值。
-    const bid = parseFloat(document.getElementById('bidId').value) || 0;
-    const ask = parseFloat(document.getElementById('askId').value) || 0;
-    const share = parseInt(document.getElementById('shareId').value) || 0;
-    const feeDiscount = parseInt(document.getElementById('feeDiscountId').value) || 0;
+    const Bid = parseFloat(document.getElementById('Bid_Id').value) || 0;
+    const Ask = parseFloat(document.getElementById('Ask_Id').value) || 0;
+    const Share = parseInt(document.getElementById('Share_Id').value) || 0;
+    const STT = parseFloat(document.getElementById('STT_Id').value) || 0;
+    const FeeDiscount = parseInt(document.getElementById('FeeDiscount_Id').value) || 0;
   
     // 再用一個變數儲存金額加總
-    //const fee = parseFloat((bid + ask) * 1.425 * (feeDiscount / 100));
-    //const fee = parseFloat((bid + ask) * 0.001425 * share * (feeDiscount / 100));
-    const fee = parseFloat((bid + ask) * share * 0.001425 * (feeDiscount / 100));
-    //const sum = parseFloat((ask - bid - ask * 0.003) * share - fee);
-    const sum = parseFloat((ask - bid - ((bid + ask) * 0.001425 * (feeDiscount / 100)) - ask * 0.003) * share);
-    //const percent = parseFloat(((ask - bid -ask * 0.004425 - bid * 0.001425) / bid) * 100);
-    const percent = parseFloat((sum / (bid * share)) * 100);
+    //const fee = parseFloat((Bid + Ask) * 1.425 * (FeeDiscount / 100));
+    //const fee = parseFloat((Bid + Ask) * 0.001425 * Share * (FeeDiscount / 100));
+    const fee = parseFloat((Bid + Ask) * Share * 0.001425 * (FeeDiscount / 100));
+    //const sum = parseFloat((Ask - Bid - Ask * 0.003) * Share - fee);
+    const sum = parseFloat((Ask - Bid - ((Bid + Ask) * 0.001425 * (FeeDiscount / 100)) - (Ask * (STT / 100))) * Share);
+    //const percent = parseFloat(((Ask - Bid -Ask * 0.004425 - Bid * 0.001425) / Bid) * 100);
+    const percent = parseFloat((sum / (Bid * Share)) * 100);
 
     // 將結果格式化（加上千分位與顏色區分）
     const displayFee = document.getElementById('feeId');
