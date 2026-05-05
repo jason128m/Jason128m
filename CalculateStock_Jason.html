@@ -35,12 +35,6 @@
           text-align: right;     /* 數字靠右對齊比較美觀 */
           vertical-align: middle;
         }
-        .profit-box {
-          font-size: 50px;
-          font-weight: bold;
-          color: #080100;
-          vertical-align: middle;
-        }
         .rich-image {
           width: 100%;          /* 寬度隨容器調整 */
           max-width: 600px;     /* 最大寬度限制 */
@@ -73,6 +67,10 @@
 
   <style>
     .label-text {
+      display: inline-block;
+      align-items: center;    /* 讓數值與「元」在垂直方向中心對齊 */
+      margin: 10px 0;         /* 調整行距 */
+      line-height: 1.2;       /* 調整行高確保對齊 */
       font-size: 50px;        /* 字體大小 */
       font-weight: bold;      /* 加粗 */
       color: #080100;       /* 字體顏色 (例如紅色) */
